@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import SwiftUI
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private let locationManager = CLLocationManager()
     private var location: CLLocation?
@@ -24,18 +24,6 @@ class MapViewController: UIViewController {
         $0.layer.cornerRadius = 25
         $0.layer.masksToBounds = true
         $0.addTarget(self, action: #selector(userButtomTaped), for: .touchUpInside)
-        return $0
-    }(UIButton())
-
-    private let addPinButtom: UIButton = {
-        $0.toAutoLayout()
-        $0.setImage(UIImage(systemName: "pin"), for: .normal)
-        $0.backgroundColor = .white
-        $0.tintColor = .blue
-        $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 25
-        $0.layer.masksToBounds = true
-        $0.addTarget(self, action: #selector(addPinTaped), for: .touchUpInside)
         return $0
     }(UIButton())
 
@@ -76,18 +64,48 @@ class MapViewController: UIViewController {
     deinit {
         locationManager.stopUpdatingLocation()
     }
+
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
         checkLocationAutorization()
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        addGesture()
         layout()
         locationManager.delegate = self
     }
 
+    private func addGesture() {
+        let mapGesture = UILongPressGestureRecognizer(target: self, action: #selector(newPin(LongGesture:)))
+        mapGesture.delegate = self
+        mapKitView.addGestureRecognizer(mapGesture)
+    }
+    @objc private func newPin(LongGesture: UIGestureRecognizer) {
+
+        if LongGesture.state == UIGestureRecognizer.State.began {
+                let touchPoint: CGPoint = LongGesture.location(in: mapKitView)
+                let newCoordinate: CLLocationCoordinate2D = mapKitView.convert(touchPoint, toCoordinateFrom: mapKitView)
+                addNewPin(pointedCoordinate: newCoordinate)
+            }
+    }
+
+    private  func addNewPin(pointedCoordinate: CLLocationCoordinate2D) {
+       let alert = UIAlertController(title: "Добавить булавку", message: "Введите название", preferredStyle: .alert)
+       alert.addTextField()
+       let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
+       alert.addAction(deleteAction)
+       let ok = UIAlertAction(title: "Ok", style: .default, handler: {_ in
+
+           self.displayBranchLocation(location: pointedCoordinate, name: "\(alert.textFields![0].text!)")
+       })
+       alert.addAction(ok)
+       self.present(alert, animated: true, completion: nil)
+   }
+
     private func layout() {
-        view.addSubviews(mapKitView, userLocationButtom, addPinButtom, mapTypeButton, removeAllPinsButton)
+        view.addSubviews(mapKitView, userLocationButtom,  mapTypeButton, removeAllPinsButton) //addPinButtom,
         NSLayoutConstraint.activate([
             mapKitView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapKitView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -103,13 +121,6 @@ class MapViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            addPinButtom.widthAnchor.constraint(equalToConstant: 50),
-            addPinButtom.heightAnchor.constraint(equalToConstant: 50),
-            addPinButtom.trailingAnchor.constraint(equalTo: mapKitView.trailingAnchor, constant: -16),
-            addPinButtom.bottomAnchor.constraint(equalTo: userLocationButtom.topAnchor, constant: -16)
-        ])
-
-        NSLayoutConstraint.activate([
             mapTypeButton.widthAnchor.constraint(equalToConstant: 50),
             mapTypeButton.heightAnchor.constraint(equalToConstant: 50),
             mapTypeButton.leadingAnchor.constraint(equalTo: mapKitView.leadingAnchor, constant: 16),
@@ -122,19 +133,6 @@ class MapViewController: UIViewController {
             removeAllPinsButton.leadingAnchor.constraint(equalTo: mapKitView.leadingAnchor, constant: 16),
             removeAllPinsButton.bottomAnchor.constraint(equalTo: mapKitView.bottomAnchor, constant: -50)
         ])
-    }
-
-    @objc private  func addPinTaped () {
-        let alert = UIAlertController(title: "Добавить булавку", message: "Введите название", preferredStyle: .alert)
-        alert.addTextField()
-        let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
-        alert.addAction(deleteAction)
-        let ok = UIAlertAction(title: "Ok", style: .default, handler: {_ in
-            let coordinate = self.mapKitView.centerCoordinate
-            self.displayBranchLocation(location: coordinate, name: "\(alert.textFields![0].text!)")
-        })
-        alert.addAction(ok)
-        self.present(alert, animated: true, completion: nil)
     }
 
     @objc private  func userButtomTaped () {
