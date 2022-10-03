@@ -85,24 +85,27 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc private func newPin(LongGesture: UIGestureRecognizer) {
 
         if LongGesture.state == UIGestureRecognizer.State.began {
-                let touchPoint: CGPoint = LongGesture.location(in: mapKitView)
-                let newCoordinate: CLLocationCoordinate2D = mapKitView.convert(touchPoint, toCoordinateFrom: mapKitView)
-                addNewPin(pointedCoordinate: newCoordinate)
-            }
+            let touchPoint: CGPoint = LongGesture.location(in: mapKitView)
+            let newCoordinate: CLLocationCoordinate2D = mapKitView.convert(touchPoint, toCoordinateFrom: mapKitView)
+            addNewPin(pointedCoordinate: newCoordinate)
+        }
     }
 
     private  func addNewPin(pointedCoordinate: CLLocationCoordinate2D) {
-       let alert = UIAlertController(title: "Добавить булавку", message: "Введите название", preferredStyle: .alert)
-       alert.addTextField()
-       let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
-       alert.addAction(deleteAction)
-       let ok = UIAlertAction(title: "Ok", style: .default, handler: {_ in
-
-           self.displayBranchLocation(location: pointedCoordinate, name: "\(alert.textFields![0].text!)")
-       })
-       alert.addAction(ok)
-       self.present(alert, animated: true, completion: nil)
-   }
+        let alert = UIAlertController(title: "Добавить булавку", message: "Введите название", preferredStyle: .alert)
+        alert.addTextField()
+        let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
+        alert.addAction(deleteAction)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: {_ in
+            var name = alert.textFields![0].text!
+            if name == "" {
+                name = String(self.mapKitView.annotations.count)
+            }
+            self.displayBranchLocation(location: pointedCoordinate, name: name)
+        })
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
 
     private func layout() {
         view.addSubviews(mapKitView, userLocationButtom,  mapTypeButton, removeAllPinsButton) //addPinButtom,
