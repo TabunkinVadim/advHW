@@ -11,9 +11,9 @@ final class Checker {
     
     static let shared = Checker()
     #if DEBUG
-    private let login = "Пётр"
+    private let login = "Petr".localized
     #else
-    private let login = "Иван"
+    private let login = "Ivan".localized
     #endif
     private var pswd = "1"
     

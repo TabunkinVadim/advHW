@@ -92,11 +92,11 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private  func addNewPin(pointedCoordinate: CLLocationCoordinate2D) {
-        let alert = UIAlertController(title: "Добавить булавку", message: "Введите название", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add pin".localized, message: "Enter the title".localized, preferredStyle: .alert)
         alert.addTextField()
-        let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
+        let deleteAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {_ in })
         alert.addAction(deleteAction)
-        let ok = UIAlertAction(title: "Ok", style: .default, handler: {_ in
+        let ok = UIAlertAction(title: "Ok".localized, style: .default, handler: {_ in
             var name = alert.textFields![0].text!
             if name == "" {
                 name = String(self.mapKitView.annotations.count)
@@ -159,10 +159,10 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @objc private  func removeAllPins () {
-        let alert = UIAlertController(title: "Удалить все булавки", message: "Вы точно хотите удалить все булавки?", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
+        let alert = UIAlertController(title: "RemoveAllPins".localized, message: "DeletePinMassege".localized, preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {_ in })
         alert.addAction(deleteAction)
-        let ok = UIAlertAction(title: "Ok", style: .destructive, handler: {_ in
+        let ok = UIAlertAction(title: "Ok".localized, style: .destructive, handler: {_ in
             self.mapKitView.removeAnnotations(self.mapKitView.annotations)
             self.mapKitView.overlays.forEach {self.mapKitView.removeOverlay($0)}
         })
@@ -211,10 +211,10 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate {
             mapKitView.showsUserLocation = true
             locationManager.startUpdatingLocation()
         case .denied, .restricted:
-            let alert = UIAlertController(title: "Ошибка", message: "Нет доступа к геолокации\nПерейти в настройки?", preferredStyle: .alert)
-            let deleteAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in })
+            let alert = UIAlertController(title: "Error".localized, message: "NoAccessAclocationMaassege".localized, preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {_ in })
             alert.addAction(deleteAction)
-            let ok = UIAlertAction(title: "Настройки", style: .destructive) {_ in
+            let ok = UIAlertAction(title: "Settings".localized, style: .destructive) {_ in
                 if let url = URL(string: "App-Prefs:root=LOCATION_SERVICES") {
                     UIApplication.shared.open(url)
                 }

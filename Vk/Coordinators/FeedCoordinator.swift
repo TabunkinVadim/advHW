@@ -22,9 +22,8 @@ public final class FeedCoordinator: Coordinator{
     func start() {
         let vc = FeedViewController(checkModel: checkModel)
         vc.feedModel.coordinator = self
-        vc.tabBarItem = UITabBarItem(title: "Newsline", image: UIImage(systemName: "newspaper")?.withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: 0)), tag: 0 )
+        vc.tabBarItem = UITabBarItem(title: "Feed".localized, image: UIImage(systemName: "newspaper")?.withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: 0)), tag: 0 )
         vc.view.backgroundColor = .systemBackground
-        vc.title = "Feed"
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: false)
     }

@@ -21,9 +21,8 @@ public final class FavoritePostsCoordinator: Coordinator{
     func start() {
         let vc = FavoritePostsController()
         vc.view.backgroundColor = .systemBackground
-        vc.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart.fill")?.withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: 0)), tag: 0 )
+        vc.tabBarItem = UITabBarItem(title: "Favorite".localized, image: UIImage(systemName: "heart.fill")?.withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: 0)), tag: 0 )
         vc.view.backgroundColor = .systemBackground
-        vc.title = "Favorite"
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: false)
     }

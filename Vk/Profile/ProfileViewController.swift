@@ -50,8 +50,8 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     }
 
     func close() {
-        let alert = UIAlertController(title: "Выход", message: "Вы уверенны?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "да", style: .destructive) { _ in
+        let alert = UIAlertController(title: "Exit".localized, message: "YouAreSure".localized, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Yes".localized, style: .destructive) { _ in
             let realmCoordinator = RealmCoordinator()
             guard let item = realmCoordinator.get() else {return}
             realmCoordinator.edit(item: item, isLogIn: false)
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
             self.coordinator?.logInVC()
         }
         alert.addAction(ok)
-        let cancel = UIAlertAction(title: "нет", style: .cancel) { _ in
+        let cancel = UIAlertAction(title: "No".localized, style: .cancel) { _ in
         }
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)

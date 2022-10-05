@@ -32,7 +32,7 @@ class PhotosTableViewCell: UITableViewCell {
 
     private let title: UILabel = {
         $0.toAutoLayout()
-        $0.text = "Photos"
+        $0.text = "Photos".localized
         $0.font = UIFont.boldSystemFont(ofSize: 24)
         return $0
     }(UILabel())

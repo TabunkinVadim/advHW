@@ -56,14 +56,18 @@ class PostTableViewCell: UITableViewCell {
     } (UILabel())
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        self.index = index
         super .init(style: style, reuseIdentifier: reuseIdentifier)
-//        self.index = index
         layout()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func likesCount(NumberOfLike: Int) -> String {
+        let formatString: String = NSLocalizedString("NumberOfLike", comment: "")
+        let resultString: String = String.localizedStringWithFormat(formatString, NumberOfLike)
+        return resultString
     }
 
     func setupCell (model:Post, set: Int) {
@@ -84,8 +88,8 @@ class PostTableViewCell: UITableViewCell {
             postImage.image = imageFilter
         }
         postDescription.text = model.description
-        postLike.text = "Likes: \(model.likes)"
-        postViews.text = "Views: \(model.views)"
+        postLike.text = "\(likesCount(NumberOfLike: model.likes))"//"\(model.likes)"// \("Likes".localized):
+        postViews.text = "\("Views".localized): \(model.views)"
     }
 
     private func layout() {

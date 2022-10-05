@@ -18,3 +18,8 @@ extension UIView {
         subviews.forEach {addSubview($0)}
     }
 }
+extension String {
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
+}
