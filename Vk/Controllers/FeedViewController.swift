@@ -34,12 +34,12 @@ class FeedViewController: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.tintColor = UIColor(named: "MainColor")
         $0.autocapitalizationType = .none
-        $0.placeholder = "any word"
+        $0.placeholder = "anyWord".localized
         $0.delegate = self
         return $0
     }(UITextField())
 
-    private lazy var wordCheck = CustomButton(title: "Chech word", color: UIColor(named: "MainColor") ?? .systemBlue, colorTitle: .white, borderWith: 0, cornerRadius: 10) {
+    private lazy var wordCheck = CustomButton(title: "CheckWord".localized, color: UIColor(named: "MainColor") ?? .systemBlue, colorTitle: .white, borderWith: 0, cornerRadius: 10) {
         self.feedModel.chenge(.tapButton(checkModel: self.checkModel, textField: self.word))
     }
 
@@ -182,6 +182,6 @@ public extension NSNotification.Name {
     static let greenLable = NSNotification.Name("greenLable")
 }
 
-let newPost = Post(author: "News", image: UIImage(), description: "", likes: 10, views: 10, title: "Новости")
+//let newPost = Post(author: "News", image: UIImage(), description: "", likes: 10, views: 10, title: "Новости")
 
 

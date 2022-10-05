@@ -38,11 +38,11 @@ class InfoViewController: UIViewController {
         return $0
     }(UITableView(frame: .zero, style: .plain))
 
-    private lazy var alertButton = CustomButton(title: "Alert", color: .white, colorTitle: .blue, borderWith: 1, cornerRadius: 10) {
-        let pressAlertButtom = UIAlertController(title: "Alert", message: "Внимание", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in print("Отмена")})
+    private lazy var alertButton = CustomButton(title: "Alert".localized, color: .white, colorTitle: .blue, borderWith: 1, cornerRadius: 10) {
+        let pressAlertButtom = UIAlertController(title: "Alert".localized, message: "Attention".localized, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: {_ in print("Cancel".localized)})
         pressAlertButtom.addAction(cancelAction)
-        let deleteAction = UIAlertAction(title: "Удалить", style: .destructive, handler: {_ in print("Удалить")})
+        let deleteAction = UIAlertAction(title: "Delete".localized, style: .destructive, handler: {_ in print("Delete".localized)})
         pressAlertButtom.addAction(deleteAction)
         self.present(pressAlertButtom, animated: true, completion: nil)
     }
@@ -50,7 +50,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Info"
+        title = "Info".localized
         layout()
         requestUrl1()
         requestUrl2()
@@ -152,7 +152,7 @@ extension InfoViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Жители планеты Таурин"
+        "Inhabitants".localized
     }
 }
 

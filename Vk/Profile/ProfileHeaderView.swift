@@ -37,27 +37,26 @@ class ProfileHeaderView:UITableViewHeaderFooterView  {
         let lable = UILabel()
         lable.font = UIFont.boldSystemFont(ofSize: 18)
         lable.textColor = .black
-        lable.text = "Иван Иванович"
+//        lable.text = "Иван Иванович"
         return lable
     }()
 
-    private lazy var exitButtom = CustomButton(title: "Выйти", color: .white, colorTitle: .red, borderWith: 1, cornerRadius: 10) {
+    private lazy var exitButtom = CustomButton(title: "Exit".localized, color: .white, colorTitle: .red, borderWith: 1, cornerRadius: 10) {
         self.delegateClose?.close()
-
 
     }
 
-    private lazy var statusButtom = CustomButton(title: "Show status", color: .blue, colorTitle: .white, borderWith: 0, cornerRadius: 4) {
+    private lazy var statusButtom = CustomButton(title: "ShowStatus".localized, color: .blue, colorTitle: .white, borderWith: 0, cornerRadius: 4) {
         self.coordinator?.photoVC()
         self.status.text = self.statusText
-        print(self.status.text ?? "Статус отсутствует")
+        print(self.status.text ?? "NoStatus".localized)
 
     }
     
     var status: UILabel = {
         let lable = UILabel(frame: CGRect(x: 100, y: 400, width: 200, height: 40))
         lable.font = UIFont.systemFont(ofSize: 14)
-        lable.text = "Я в шоке..."
+        lable.text = ""
         lable.textColor = .gray
         return lable
     }()
@@ -89,7 +88,7 @@ class ProfileHeaderView:UITableViewHeaderFooterView  {
     
     @objc func pressStatusButtom(_ sender:Any) {
         status.text = statusText
-        print(status.text ?? "Статус отсутствует")
+        print(status.text ?? "NoStatus".localized)
     }
     
     @objc func statusTextChanged(_ textField: UITextField){

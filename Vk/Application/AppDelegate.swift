@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try Firebase.Auth.auth().signOut()
         } catch {
-            print("Произошла ошибка")
+            print("Error".localized)
         }
     }
 

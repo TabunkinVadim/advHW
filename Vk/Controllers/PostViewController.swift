@@ -13,8 +13,8 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         title = newPost.title
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(infoButtom(_:)))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Feed", style: .plain, target: self, action: #selector(pop(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info".localized, style: .plain, target: self, action: #selector(infoButtom(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Feed".localized, style: .plain, target: self, action: #selector(pop(_:)))
     }
     @objc func infoButtom(_ sender:Any) {
         coordinator?.infoVC()
