@@ -19,6 +19,7 @@ class CustomButton: UIButton {
         setTitleColor(colorTitle, for: .normal)
         layer.cornerRadius = cornerRadius
         layer.borderWidth = borderWith
+        layer.borderColor =  UIColor.lightGray.cgColor
         layer.masksToBounds = true
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         toAutoLayout()
