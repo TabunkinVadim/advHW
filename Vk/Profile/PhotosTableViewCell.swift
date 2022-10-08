@@ -26,7 +26,7 @@ class PhotosTableViewCell: UITableViewCell {
         $0.toAutoLayout()
         $0.image = UIImage(systemName: "arrow.right")
         $0.contentMode = .scaleAspectFit
-        $0.tintColor = .black
+        $0.tintColor = .textColor
         return $0
     }(UIImageView ())
 
@@ -34,6 +34,7 @@ class PhotosTableViewCell: UITableViewCell {
         $0.toAutoLayout()
         $0.text = "Photos".localized
         $0.font = UIFont.boldSystemFont(ofSize: 24)
+        $0.textColor = .textColor
         return $0
     }(UILabel())
 

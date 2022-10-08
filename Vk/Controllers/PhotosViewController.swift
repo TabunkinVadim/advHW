@@ -28,7 +28,7 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = false
         title = "PhotoGallery".localized
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         super.viewDidLoad()
         threadImages()
         layout()

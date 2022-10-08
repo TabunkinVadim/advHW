@@ -24,13 +24,11 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
         $0.toAutoLayout()
         $0.dataSource = self
         $0.delegate = self
-        
-#if DEBUG
-        $0.backgroundColor = .red
-#else
-        $0.backgroundColor = .systemGray6
-#endif
-        
+        //#if DEBUG
+        $0.backgroundColor = .backgroundColor
+        //#else
+        //        $0.backgroundColor = .systemGray6
+        //#endif
         $0.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
         $0.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         $0.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
@@ -104,6 +102,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if (indexPath.section == 0) {
             var cell: PhotosTableViewCell
             cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
+            cell.contentView.backgroundColor = .backgroundCellColor
             return cell
         } else {
             var cell: PostTableViewCell

@@ -47,7 +47,7 @@ class LogInViewController: UIViewController {
         $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 10
-        $0.textColor = .black
+        $0.textColor = .textColor
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.tintColor = UIColor(named: "MainColor")
         $0.autocapitalizationType = .none
@@ -65,7 +65,7 @@ class LogInViewController: UIViewController {
             loginButtom?.setTitleColor(.white, for: .normal)
             loginButtom?.layer.borderWidth = 0
         } else {
-            loginButtom?.backgroundColor = .white
+            loginButtom?.backgroundColor = .systemGray6
             loginButtom?.setTitleColor(UIColor(named: "MainColor") ?? .blue, for: .normal)
             loginButtom?.layer.borderWidth = 1
         }
@@ -81,7 +81,7 @@ class LogInViewController: UIViewController {
         $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 10
-        $0.textColor = .black
+        $0.textColor = .textColor
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.tintColor = UIColor(named: "MainColor")
         $0.autocapitalizationType = .none
@@ -102,7 +102,7 @@ class LogInViewController: UIViewController {
     private let checker = CheckerService()
     private let loginCheker: LoginInspector
 
-    private lazy var delBottom = CustomButton(title: "Delete".localized, color: .red, colorTitle: .white, borderWith: 1, cornerRadius: 10) {
+    private lazy var delBottom = CustomButton(title: "Delete".localized, color: .delButtomColor, colorTitle: .white, borderWith: 1, cornerRadius: 10) {
         self.realmCoordinator.delete()
         self.setButtomLogin()
     }

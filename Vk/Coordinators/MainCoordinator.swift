@@ -14,11 +14,11 @@ final class MainCoordinator: Coordinator {
     
     var childCoordinators =  [Coordinator]()
     var navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         let loginFactory = MyLoginFactory()
         let checkModel = CheckModel()
@@ -27,7 +27,7 @@ final class MainCoordinator: Coordinator {
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(vc, animated: false)
     }
-
+    
     func profile(navigationController: UINavigationController, loginCheker: LoginInspector)-> ProfileCoordinator {
         let child = ProfileCoordinator(navigationController: navigationController, loginCheker: loginCheker)
         childCoordinators.append(child)
@@ -35,7 +35,7 @@ final class MainCoordinator: Coordinator {
         child.start()
         return child
     }
-
+    
     func feed(navigationController: UINavigationController, checkModel: CheckModel) -> FeedCoordinator{
         let child = FeedCoordinator(navigationController: navigationController, checkModel: checkModel)
         childCoordinators.append(child)
@@ -54,7 +54,7 @@ final class MainCoordinator: Coordinator {
         child.start()
         return child
     }
-
+    
     func childDidFinish(_ child:Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
