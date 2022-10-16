@@ -47,12 +47,12 @@ class LogInViewController: UIViewController {
         $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 10
-        $0.textColor = .black
+        $0.textColor = .textColor
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.tintColor = UIColor(named: "MainColor")
         $0.autocapitalizationType = .none
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        $0.placeholder = "Email of phone"
+        $0.placeholder = "LoginTextFieldPlaceholder".localized
         $0.delegate = self
         $0.addTarget(self, action: #selector(loginsSeting(_:)), for: .editingChanged)
         $0.addTarget(self, action: #selector(buttonActivate(_:)), for: .editingChanged)
@@ -65,7 +65,7 @@ class LogInViewController: UIViewController {
             loginButtom?.setTitleColor(.white, for: .normal)
             loginButtom?.layer.borderWidth = 0
         } else {
-            loginButtom?.backgroundColor = .white
+            loginButtom?.backgroundColor = .systemGray6
             loginButtom?.setTitleColor(UIColor(named: "MainColor") ?? .blue, for: .normal)
             loginButtom?.layer.borderWidth = 1
         }
@@ -81,12 +81,12 @@ class LogInViewController: UIViewController {
         $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 10
-        $0.textColor = .black
+        $0.textColor = .textColor
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.tintColor = UIColor(named: "MainColor")
         $0.autocapitalizationType = .none
         $0.layer.maskedCorners = [.layerMinXMaxYCorner , .layerMaxXMaxYCorner]
-        $0.placeholder = "Password"
+        $0.placeholder = "PasswordTextFieldPlaceholder".localized
         $0.delegate = self
         $0.isSecureTextEntry = true
         $0.addTarget(self, action: #selector(passwordSeting), for: .editingChanged)
@@ -102,15 +102,15 @@ class LogInViewController: UIViewController {
     private let checker = CheckerService()
     private let loginCheker: LoginInspector
 
-    private lazy var delBottom = CustomButton(title: "удалить", color: .red, colorTitle: .white, borderWith: 1, cornerRadius: 10) {
+    private lazy var delBottom = CustomButton(title: "Delete".localized, color: .delButtomColor, colorTitle: .white, borderWith: 1, cornerRadius: 10) {
         self.realmCoordinator.delete()
         self.setButtomLogin()
     }
 
-    private lazy var loginButtom = CustomButton(title: "Login", color: .systemGray6, colorTitle: UIColor(named: "MainColor") ?? .blue , borderWith: 1, cornerRadius: 10) {
+    private lazy var loginButtom = CustomButton(title: "Login".localized, color: .systemGray6, colorTitle: UIColor(named: "MainColor") ?? .blue , borderWith: 1, cornerRadius: 10) {
         guard let email = self.loginSet.text, !email.isEmpty, let password = self.passwordSet.text, !password.isEmpty else {
-            self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "Email of phone", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "LoginTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "PasswordTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
             return
         }
         if self.realmCoordinator.getCount() != 0 {
@@ -119,9 +119,9 @@ class LogInViewController: UIViewController {
                 self.realmCoordinator.edit(item: item, isLogIn: true)
                 self.openProfile()
             } else {
-                self.showAlert(title: "Не верный ввод", massege: "Повторите") { _ in
-                    self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "Email of phone", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-                    self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                self.showAlert(title: "InvalidInput".localized, massege: "Repeat".localized) { _ in
+                    self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "LoginTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                    self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "PasswordTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
                     self.loginSet.text = ""
                     self.passwordSet.text = ""
                     self.setButtomLogin()
@@ -133,9 +133,9 @@ class LogInViewController: UIViewController {
                     self.realmCoordinator.create(password: password, email: email)
                     self.openProfile()
                 } else {
-                    self.showAlert(title: "Не верный ввод", massege: "Повторите") { _ in
-                        self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "Email of phone", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-                        self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                    self.showAlert(title: "InvalidInput".localized, massege: "Repeat".localized) { _ in
+                        self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "LoginTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                        self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "PasswordTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
                         self.passwordCheck = ""
                         self.loginCheck = ""
                         self.loginSet.text = ""
@@ -147,8 +147,8 @@ class LogInViewController: UIViewController {
             } else {
                 self.loginCheck = email
                 self.passwordCheck = password
-                self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "Email of phone", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-                self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                self.loginSet.attributedPlaceholder = NSAttributedString.init(string: "LoginTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                self.passwordSet.attributedPlaceholder = NSAttributedString.init(string: "PasswordTextFieldPlaceholder".localized, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
                 self.loginSet.text = ""
                 self.passwordSet.text = ""
                 self.isCheck = true
@@ -160,16 +160,16 @@ class LogInViewController: UIViewController {
 
     private func showAlert (title: String, massege: String, action:@escaping (UIAlertAction)-> Void) {
         let alert = UIAlertController(title: title, message: massege, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Хорошо", style: .cancel, handler: action)
+        let ok = UIAlertAction(title: "Good".localized, style: .cancel, handler: action)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
 
     private func openProfile() {
 #if DEBUG
-        self.coordinator?.profileVC(user: TestUserService(), name: "Пётр")
+        self.coordinator?.profileVC(user: TestUserService(), name: "Petr".localized)
 #else
-        self.coordinator?.profileVC(user: CurrentUserService(), name: "Иван" )
+        self.coordinator?.profileVC(user: CurrentUserService(), name: "Ivan".localized )
 #endif
         self.dismiss(animated: true)
     }
@@ -190,16 +190,16 @@ class LogInViewController: UIViewController {
     }
     private func setButtomLogin() {
         if isCheck {
-            self.loginButtom?.setTitle("Повторите ввод", for: .normal)
+            self.loginButtom?.setTitle("Retype".localized, for: .normal)
         } else{
             let realm = try! Realm()
             var items: Results<AuthorizationRealmModel>?
             items = realm.objects(AuthorizationRealmModel.self)
             guard let items = items else { return }
             if items.count != 0 {
-                self.loginButtom?.setTitle("Вход", for: .normal)
+                self.loginButtom?.setTitle("Login".localized, for: .normal)
             } else {
-                self.loginButtom?.setTitle("Создать аккаунт", for: .normal)
+                self.loginButtom?.setTitle("CreateAnAccount".localized, for: .normal)
             }
         }
     }

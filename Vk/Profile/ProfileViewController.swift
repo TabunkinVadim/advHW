@@ -24,13 +24,11 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
         $0.toAutoLayout()
         $0.dataSource = self
         $0.delegate = self
-        
-#if DEBUG
-        $0.backgroundColor = .red
-#else
-        $0.backgroundColor = .systemGray6
-#endif
-        
+        //#if DEBUG
+        $0.backgroundColor = .backgroundColor
+        //#else
+        //        $0.backgroundColor = .systemGray6
+        //#endif
         $0.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
         $0.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         $0.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
@@ -50,8 +48,8 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     }
 
     func close() {
-        let alert = UIAlertController(title: "Выход", message: "Вы уверенны?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "да", style: .destructive) { _ in
+        let alert = UIAlertController(title: "Exit".localized, message: "YouAreSure".localized, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Yes".localized, style: .destructive) { _ in
             let realmCoordinator = RealmCoordinator()
             guard let item = realmCoordinator.get() else {return}
             realmCoordinator.edit(item: item, isLogIn: false)
@@ -59,7 +57,7 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
             self.coordinator?.logInVC()
         }
         alert.addAction(ok)
-        let cancel = UIAlertAction(title: "нет", style: .cancel) { _ in
+        let cancel = UIAlertAction(title: "No".localized, style: .cancel) { _ in
         }
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
@@ -104,6 +102,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if (indexPath.section == 0) {
             var cell: PhotosTableViewCell
             cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
+            cell.contentView.backgroundColor = .backgroundCellColor
             return cell
         } else {
             var cell: PostTableViewCell

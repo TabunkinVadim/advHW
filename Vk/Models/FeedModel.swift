@@ -27,7 +27,7 @@ class FeedModel {
             if textField.text != ""{
                 checkModel.check(word: textField.text!)
             } else {
-                textField.placeholder = "Введите слово"
+                textField.placeholder = "EnterWord".localized
             }
         }
     }

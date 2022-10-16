@@ -10,14 +10,17 @@ import UIKit
 class MainTabBarController: UITabBarController {
 
     weak var coordinator: MainCoordinator?
-        var profileCoordinator: ProfileCoordinator
-        var feedCoordinator: FeedCoordinator
+    var profileCoordinator: ProfileCoordinator
+    var feedCoordinator: FeedCoordinator
     var favoritePostCoordinator: FavoritePostsCoordinator
+    var mapCoordinator: MapCoordinator
+
 
     init (loginCheker: LoginInspector,checkModel: CheckModel ){
         profileCoordinator = MainCoordinator.shared.profile(navigationController: UINavigationController(), loginCheker: loginCheker)
         feedCoordinator = MainCoordinator.shared.feed(navigationController: UINavigationController(), checkModel: checkModel)
         favoritePostCoordinator = MainCoordinator.shared.favorite(navigationController: UINavigationController())
+        mapCoordinator = MainCoordinator.shared.map(navigationController: UINavigationController())
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -27,7 +30,7 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [profileCoordinator.navigationController, feedCoordinator.navigationController, favoritePostCoordinator.navigationController]
+        viewControllers = [profileCoordinator.navigationController, feedCoordinator.navigationController, favoritePostCoordinator.navigationController,mapCoordinator.navigationController ]
     }
 }
 

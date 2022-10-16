@@ -40,7 +40,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -49,6 +50,16 @@
                BlueprintIdentifier = "6E9D02B9283D7D59000F6E91"
                BuildableName = "StorageServiceTests.xctest"
                BlueprintName = "StorageServiceTests"
+               ReferencedContainer = "container:Vk.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6E01408228F87C3100BAB2AD"
+               BuildableName = "VkTests.xctest"
+               BlueprintName = "VkTests"
                ReferencedContainer = "container:Vk.xcodeproj">
             </BuildableReference>
          </TestableReference>
