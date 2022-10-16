@@ -10,6 +10,7 @@
 		19A0927494A62BD73A4E4BCB /* Pods_Vk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374BF3B94C9D86D3942CC9BF /* Pods_Vk.framework */; };
 		3D949D5D4B8ACF358CB884D7 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C01C93234AACFBCA06D4522 /* Pods_StorageService.framework */; };
 		66081621A8704BBB62F5312E /* Pods_StorageService_StorageServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC2031E4A084436B03B0E9C /* Pods_StorageService_StorageServiceTests.framework */; };
+		6E01408628F87C3200BAB2AD /* ProfileCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E01408528F87C3200BAB2AD /* ProfileCoordinatorTests.swift */; };
 		6E030B0727CBFCFC004609EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E030B0627CBFCFC004609EE /* AppDelegate.swift */; };
 		6E030B0B27CBFCFC004609EE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E030B0A27CBFCFC004609EE /* MainTabBarController.swift */; };
 		6E030B1027CBFD01004609EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E030B0F27CBFD01004609EE /* Assets.xcassets */; };
@@ -77,6 +78,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6E01408728F87C3200BAB2AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E030AFB27CBFCFC004609EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E030B0227CBFCFC004609EE;
+			remoteInfo = Vk;
+		};
 		6E9D02BC283D7D59000F6E91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E030AFB27CBFCFC004609EE /* Project object */;
@@ -121,6 +129,8 @@
 		3FB83CF4865F9E3D38524D75 /* Pods-StorageService-StorageServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService-StorageServiceTests.release.xcconfig"; path = "Target Support Files/Pods-StorageService-StorageServiceTests/Pods-StorageService-StorageServiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		4BC2031E4A084436B03B0E9C /* Pods_StorageService_StorageServiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService_StorageServiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		537D7157F6077529F31BEC7A /* Pods-StorageService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.debug.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.debug.xcconfig"; sourceTree = "<group>"; };
+		6E01408328F87C3100BAB2AD /* VkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E01408528F87C3200BAB2AD /* ProfileCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinatorTests.swift; sourceTree = "<group>"; };
 		6E030B0327CBFCFC004609EE /* Vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E030B0627CBFCFC004609EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E030B0A27CBFCFC004609EE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -191,6 +201,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6E01408028F87C3100BAB2AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E030B0027CBFCFC004609EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,12 +240,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E01408428F87C3200BAB2AD /* VkTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E01408528F87C3200BAB2AD /* ProfileCoordinatorTests.swift */,
+			);
+			path = VkTests;
+			sourceTree = "<group>";
+		};
 		6E030AFA27CBFCFC004609EE = {
 			isa = PBXGroup;
 			children = (
 				6E030B0527CBFCFC004609EE /* Vk */,
 				6E9D02B3283D7D59000F6E91 /* StorageService */,
 				6E9D02C0283D7D59000F6E91 /* StorageServiceTests */,
+				6E01408428F87C3200BAB2AD /* VkTests */,
 				6E030B0427CBFCFC004609EE /* Products */,
 				6E9D02D4283E9CAA000F6E91 /* Frameworks */,
 				C73E24637C46615620A154DB /* Pods */,
@@ -241,6 +267,7 @@
 				6E030B0327CBFCFC004609EE /* Vk.app */,
 				6E9D02B2283D7D59000F6E91 /* StorageService.framework */,
 				6E9D02BA283D7D59000F6E91 /* StorageServiceTests.xctest */,
+				6E01408328F87C3100BAB2AD /* VkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -426,6 +453,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		6E01408228F87C3100BAB2AD /* VkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E01408B28F87C3200BAB2AD /* Build configuration list for PBXNativeTarget "VkTests" */;
+			buildPhases = (
+				6E01407F28F87C3100BAB2AD /* Sources */,
+				6E01408028F87C3100BAB2AD /* Frameworks */,
+				6E01408128F87C3100BAB2AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E01408828F87C3200BAB2AD /* PBXTargetDependency */,
+			);
+			name = VkTests;
+			productName = VkTests;
+			productReference = 6E01408328F87C3100BAB2AD /* VkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6E030B0227CBFCFC004609EE /* Vk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E030B1727CBFD01004609EE /* Build configuration list for PBXNativeTarget "Vk" */;
@@ -498,9 +543,13 @@
 		6E030AFB27CBFCFC004609EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					6E01408228F87C3100BAB2AD = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 6E030B0227CBFCFC004609EE;
+					};
 					6E030B0227CBFCFC004609EE = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -534,11 +583,19 @@
 				6E030B0227CBFCFC004609EE /* Vk */,
 				6E9D02B1283D7D59000F6E91 /* StorageService */,
 				6E9D02B9283D7D59000F6E91 /* StorageServiceTests */,
+				6E01408228F87C3100BAB2AD /* VkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6E01408128F87C3100BAB2AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E030B0127CBFCFC004609EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -674,6 +731,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6E01407F28F87C3100BAB2AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E01408628F87C3200BAB2AD /* ProfileCoordinatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E030AFF27CBFCFC004609EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,6 +811,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6E01408828F87C3200BAB2AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E030B0227CBFCFC004609EE /* Vk */;
+			targetProxy = 6E01408728F87C3200BAB2AD /* PBXContainerItemProxy */;
+		};
 		6E9D02BD283D7D59000F6E91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6E9D02B1283D7D59000F6E91 /* StorageService */;
@@ -803,6 +873,57 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6E01408928F87C3200BAB2AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HYPX9AG362;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					HEADER_SEARCH_PATHS,
+					"=",
+					"\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tabunkin-Vadim.VkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vk.app/Vk";
+			};
+			name = Debug;
+		};
+		6E01408A28F87C3200BAB2AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = HYPX9AG362;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					HEADER_SEARCH_PATHS,
+					"=",
+					"\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Tabunkin-Vadim.VkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vk.app/Vk";
+			};
+			name = Release;
+		};
 		6E030B1527CBFD01004609EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1070,6 +1191,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6E01408B28F87C3200BAB2AD /* Build configuration list for PBXNativeTarget "VkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E01408928F87C3200BAB2AD /* Debug */,
+				6E01408A28F87C3200BAB2AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6E030AFE27CBFCFC004609EE /* Build configuration list for PBXProject "Vk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

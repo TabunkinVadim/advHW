@@ -15,14 +15,15 @@ final class ProfileCoordinator: Coordinator{
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     let loginCheker: LoginInspector
-    
+    var item :AuthorizationRealmModel?
     init(navigationController: UINavigationController, loginCheker: LoginInspector) {
         self.navigationController = navigationController
         self.loginCheker = loginCheker
     }
     
     func start() {
-        guard let item = RealmCoordinator().get() else {
+        item = RealmCoordinator().get()
+        guard let item = item  else {
             logInVC()
             return}
         
