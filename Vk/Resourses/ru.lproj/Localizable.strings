@@ -1,0 +1,166 @@
+/* 
+ Localizable.strings
+ Vk
+
+ Created by Табункин Вадим on 04.10.2022.
+
+ */
+
+//MArK: General
+
+"Yes" = "Да";
+
+"No" = "Нет";
+
+"Ok" = "Хорошо";
+
+"Cancel" = "Отмена";
+
+"Delete" = "Удалить";
+
+"Error" = "Ошибка";
+
+"UnknownError" = "Неизвесная ошибка";
+
+"Good" = "Хорошо";
+
+"Attention" = "Внимание";
+
+//MArK: ProfileCoordinator
+
+"Petr" = "Пётр";
+
+"Ivan" = "Иван";
+
+"Profile" = "Профиль";
+
+//"NewAccount" = "Создание аккаунта";
+
+//"NewAccountMassege" = "Вы хотите создать аккаунт?";
+
+//MArK: FeedCoordinator
+
+"Feed" = "Лента";
+
+//MArK: FeedCoordinator
+
+"Favorite" = "Любимое";
+
+//MArK: MapCoordinator
+
+"Map" = "Карта";
+
+//MArK: FeedModel
+
+"EnterWord" = "Введите слово";
+
+//MArK: ProfileHeaderView
+
+"Exit" = "Выйти";
+
+//MArK: ProfileHeaderView
+
+"ShowStatus" = "Опубликовать статус";
+
+"NoStatus" =  "Статус отсутствует";
+
+//MArK: PostTableViewCell
+
+"Likes" = "Нравиться";
+
+"Views" = "Просмотров";
+
+//MArK: PhotosTableViewCell
+
+"Photos" = "Фотографии";
+
+// MARK: LoginViewController
+
+"LoginTextFieldPlaceholder" = "Почта или телефон";
+
+"PasswordTextFieldPlaceholder" = "Пароль";
+
+"Delete" = "Удалить";
+
+"Login" = "Войти";
+
+"InvalidInput" = "Не верный ввод";
+
+"Repeat" = "Повторите";
+
+"Retype" = "Повторите ввод";
+
+"CreateAnAccount" = "Создать аккаунт";
+
+// MARK: ProfileViewController
+
+"YouAreSure" = "Вы уверенны?";
+
+// MARK: FeedViewController
+
+"anyWord" = "Любое слово";
+
+"CheckWord" = "Проверить слово";
+
+// MARK: PhotosViewController
+
+"PhotoGallery" = "Фото галерея";
+
+// MARK: PostViewController
+
+"Info" = "Инфо";
+
+// MARK: InfoViewController
+
+"Alert" = "Предупреждение";
+
+"Inhabitants" = "Жители планеты Таурин";
+
+// MARK: MapViewController
+
+"Add pin" = "Добавить булавку";
+
+"Enter the title" = "Введите название";
+
+"RemoveAllPins" = "Удалить все булавки";
+
+"DeletePinMassege" = "Вы точно хотите удалить все булавки?";
+
+"NoAccessAclocationMaassege" = "Нет доступа к геолокации\nПерейти в настройки?";
+
+"Settings" = "Настройки";
+
+// MARK: TestUserService
+
+"PetrStatus" = "Русский тот, кто любит Россию и ей служит";
+
+// MARK: CurrentUserService
+
+"IvanStatus" = "Век живи, век учись";
+
+// MARK: Post
+
+"AuthorPost1" = "ЗиновкинАРТ";
+
+"DescriptionPost1" = "Здесь опять простая символика, о её значении пусть каждый решает сам.";
+
+"AuthorPost2" = "Книги";
+
+"DescriptionPost2" = "Уникальный арт-объект «Потерянная книга»";
+
+"AuthorPost3" = "Читай Книги";
+
+"DescriptionPost3" = "Прoклятущая лень! Кaкой я был бы cлавный чeловек, кoли бы oна мнe нe мeшaлa.\n— Л. Н. Тoлстoй";
+
+"AuthorPost4" = "Мульт";
+
+"DescriptionPost4" = "Ежик в тумане";
+
+"AuthorNews" = "Новости";
+
+"DescriptionNews" = "Новости";
+
+// MARK: LocalAuthorizationService
+
+"logInToLogin" = "Авторизируйтесь для входа";
+"authenticationError" = " Ошибка аутентификации";

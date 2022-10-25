@@ -30,14 +30,14 @@ public struct Post {
 
 var images = [UIImage(imageLiteralResourceName: "img_1"), UIImage(imageLiteralResourceName: "img_2"), UIImage(imageLiteralResourceName: "img_3"), UIImage(imageLiteralResourceName: "img_4")]
 
-public var post1 = Post(author: "ZinovkinArt", image: images[0], description: "Здесь опять простая символика, о её значении пусть каждый решает сам.", likes: 230, views: 900, title: "")
+public var post1 = Post(author: NSLocalizedString("AuthorPost1", comment: ""), image: images[0], description: NSLocalizedString("DescriptionPost1", comment: ""), likes: 0, views: 900, title: "")
 
-public var post2 = Post(author: "Книги", image: images[1], description: "Уникальный арт-объект «Потерянная книга»", likes: 120, views: 700, title: "")
+public var post2 = Post(author: NSLocalizedString("AuthorPost2", comment: ""), image: images[1], description: NSLocalizedString("DescriptionPost2", comment: ""), likes: 1, views: 700, title: "")
 
-public var post3 = Post(author: "Books", image: images[2], description: "Прoклятущая лень! Кaкой я был бы cлавный чeловек, кoли бы oна мнe нe мeшaлa.\n— Л. Н. Тoлстoй", likes: 300, views: 200, title: "")
+public var post3 = Post(author: NSLocalizedString("AuthorPost3", comment: ""), image: images[2], description:NSLocalizedString("DescriptionPost3", comment: ""), likes: 102, views: 200, title: "")
 
-public var post4 = Post(author: "Мульт", image: images[3], description: "Ежик в тумане", likes: 800, views: 400, title: "")
+public var post4 = Post(author: NSLocalizedString("AuthorPost4", comment: ""), image: images[3], description: NSLocalizedString("DescriptionPost4", comment: ""), likes: 805, views: 400, title: "")
 
 public var posts = [post1, post2, post3, post4]
 
-public let newPost = Post(author: "News", image: UIImage(), description: "", likes: 10, views: 10, title: "Новости")
+public let newPost = Post(author: NSLocalizedString("AuthorNews", comment: ""), image: UIImage(), description: "", likes: 10, views: 10, title:NSLocalizedString("DescriptionNews", comment: ""))

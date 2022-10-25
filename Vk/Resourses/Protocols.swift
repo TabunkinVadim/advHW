@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol UserService {
     func setUser(fullName:String) -> User?
@@ -16,4 +17,12 @@ protocol LoginViewControllerDelegate: AnyObject {
     }
 protocol LoginFactory{
     func getLoginChek() -> LoginInspector
+}
+
+protocol ProfileViewControllerProtocol: AnyObject {
+    func close ()
+}
+
+protocol LogInViewControllerProtocol: AnyObject {
+    func showAlert (title: String, massege: String, action:@escaping (UIAlertAction)-> Void)
 }

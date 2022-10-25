@@ -1,0 +1,9 @@
+/* 
+  infoPlist.strings
+  Vk
+
+  Created by Табункин Вадим on 03.10.2022.
+  
+*/
+"NSLocationWhenInUseUsageDescription" = "Ваше местоположение необходимо, чтобы отобразить ваше местоположение и отмеченые места на карте.";
+"NSFaceIDUsageDescription" = "Использование FaceID необходима для быстрого входа в учетную запись";

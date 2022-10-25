@@ -1,0 +1,9 @@
+/* 
+  infoPlist.strings
+  Vk
+
+  Created by Табункин Вадим on 03.10.2022.
+  
+*/
+"NSLocationWhenInUseUsageDescription" = "Your location is required to display your location and marked places on the map.";
+"NSFaceIDUsageDescription" = "The use of FaceID is required for quick account login";
