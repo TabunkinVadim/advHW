@@ -30,7 +30,7 @@ class PhotosTableViewCell: UITableViewCell {
         return $0
     }(UIImageView ())
 
-    private let title: UILabel = {
+     let title: UILabel = {
         $0.toAutoLayout()
         $0.text = "Photos".localized
         $0.font = UIFont.boldSystemFont(ofSize: 24)

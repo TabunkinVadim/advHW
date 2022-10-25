@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StorageService
 import UIKit
 import RealmSwift
 import Firebase
@@ -48,7 +49,7 @@ final class ProfileCoordinator: Coordinator{
     }
     
     func profileVC(user: UserService, name: String) {
-        let vc = ProfileViewController(user: user, name: name)
+        let vc = ProfileViewController(user: user, name: name, personalPosts: posts)
         vc.coordinator = self
         vc.view.backgroundColor = .backgroundColor
         vc.tabBarItem = UITabBarItem(title: "Profile".localized, image: UIImage(systemName: "person")?.withAlignmentRectInsets(.init(top: 0, left: 0, bottom: 0, right: 0)), tag: 0 )

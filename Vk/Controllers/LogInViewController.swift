@@ -9,16 +9,15 @@ import UIKit
 import Firebase
 import RealmSwift
 
-
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, LogInViewControllerProtocol {
 
     weak var coordinator: ProfileCoordinator?
     weak var delegate: LoginViewControllerDelegate?
     weak var delegateChecker: CheckerServiceProtocol?
-
     private var isCheck = false
     private var loginCheck = ""
     private var passwordCheck = ""
+    private let localAutorization = LocalAuthorizationService()
 
     private let realmCoordinator = RealmCoordinator()
     private let contentView: UIView = {
@@ -89,6 +88,8 @@ class LogInViewController: UIViewController {
         $0.placeholder = "PasswordTextFieldPlaceholder".localized
         $0.delegate = self
         $0.isSecureTextEntry = true
+        //        $0.textContentType = .oneTimeCode
+        //        $0.textContentType = .init(rawValue: "")
         $0.addTarget(self, action: #selector(passwordSeting), for: .editingChanged)
         $0.addTarget(self, action: #selector(buttonActivate(_:)), for: .editingChanged)
         return $0
@@ -105,7 +106,35 @@ class LogInViewController: UIViewController {
     private lazy var delBottom = CustomButton(title: "Delete".localized, color: .delButtomColor, colorTitle: .white, borderWith: 1, cornerRadius: 10) {
         self.realmCoordinator.delete()
         self.setButtomLogin()
+        self.setLocalAuthorizationButtomMini()
     }
+
+    private lazy var localAuthorizationButtomMini: UIButton = {
+        $0.toAutoLayout()
+        $0.layer.cornerRadius = 10
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.lightGray.cgColor
+        $0.contentEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0)
+        $0.contentVerticalAlignment = .fill
+        $0.contentHorizontalAlignment = .fill
+        $0.addAction(UIAction() {action in
+            let realm = try! Realm()
+            var items: Results<AuthorizationRealmModel>?
+            items = realm.objects(AuthorizationRealmModel.self)
+            guard let items = items else { return }
+            if items.count != 0 {
+                self.localAutorization.authorizeIfPossible { isLogin in
+                    if isLogin {
+                        DispatchQueue.main.async {
+                            self.openProfile()
+                        }
+                    }
+                }
+            } else {
+            }
+        }, for: .touchUpInside)
+        return $0
+    }(UIButton())
 
     private lazy var loginButtom = CustomButton(title: "Login".localized, color: .systemGray6, colorTitle: UIColor(named: "MainColor") ?? .blue , borderWith: 1, cornerRadius: 10) {
         guard let email = self.loginSet.text, !email.isEmpty, let password = self.passwordSet.text, !password.isEmpty else {
@@ -154,11 +183,10 @@ class LogInViewController: UIViewController {
                 self.isCheck = true
                 self.setButtomLogin()
             }
-
         }
     }
 
-    private func showAlert (title: String, massege: String, action:@escaping (UIAlertAction)-> Void) {
+    func showAlert (title: String, massege: String, action:@escaping (UIAlertAction)-> Void) {
         let alert = UIAlertController(title: title, message: massege, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Good".localized, style: .cancel, handler: action)
         alert.addAction(ok)
@@ -185,13 +213,48 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLocalAuthorizationButtomMini()
         setButtomLogin()
+        localAutorization.delegate = self
         layout()
     }
+
+    private func setLocalAuthorizationButtomMini() {
+        let realm = try! Realm()
+        var items: Results<AuthorizationRealmModel>?
+        items = realm.objects(AuthorizationRealmModel.self)
+        guard let items = items else { return }
+        if items.count != 0 {
+            switch (localAutorization.biometricType) {
+            case .none:
+                localAuthorizationButtomMini.isHidden = true
+            case .touchID:
+                localAuthorizationButtomMini.setImage(UIImage(systemName: "touchid"), for: .normal)
+            case .faceID:
+                localAuthorizationButtomMini.setImage(UIImage(systemName: "faceid"), for: .normal)
+            default:
+                return
+            }
+        } else {
+            switch (localAutorization.biometricType) {
+            case .none:
+                localAuthorizationButtomMini.isHidden = true
+            case .touchID:
+                localAuthorizationButtomMini.setImage(UIImage(systemName: "touchid"), for: .normal)
+                localAuthorizationButtomMini.tintColor = .systemGray
+            case .faceID:
+                localAuthorizationButtomMini.setImage(UIImage(systemName: "faceid"), for: .normal)
+                localAuthorizationButtomMini.tintColor = .systemGray
+            default:
+                return
+            }
+        }
+    }
+
     private func setButtomLogin() {
         if isCheck {
             self.loginButtom?.setTitle("Retype".localized, for: .normal)
-        } else{
+        } else {
             let realm = try! Realm()
             var items: Results<AuthorizationRealmModel>?
             items = realm.objects(AuthorizationRealmModel.self)
@@ -235,7 +298,7 @@ class LogInViewController: UIViewController {
         ])
         loginButtom!.translatesAutoresizingMaskIntoConstraints = false
 
-        contentView.addSubviews(logo, loginSet, passwordSet, loginButtom!, delBottom!/*, guessingButtom!*/)
+        contentView.addSubviews(logo, loginSet, passwordSet, loginButtom!, delBottom!, localAuthorizationButtomMini/*, guessingButtom!*/)
 
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
@@ -263,6 +326,13 @@ class LogInViewController: UIViewController {
             loginButtom!.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginButtom!.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginButtom!.heightAnchor.constraint(equalToConstant: 50)
+        ])
+
+        NSLayoutConstraint.activate([
+            localAuthorizationButtomMini.topAnchor.constraint(equalTo: loginButtom!.topAnchor),
+            localAuthorizationButtomMini.trailingAnchor.constraint(equalTo: loginButtom!.trailingAnchor),
+            localAuthorizationButtomMini.widthAnchor.constraint(equalToConstant: 50),
+            localAuthorizationButtomMini.heightAnchor.constraint(equalToConstant: 50)
         ])
 
         NSLayoutConstraint.activate([

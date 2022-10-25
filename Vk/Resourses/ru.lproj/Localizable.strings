@@ -159,3 +159,8 @@
 "AuthorNews" = "Новости";
 
 "DescriptionNews" = "Новости";
+
+// MARK: LocalAuthorizationService
+
+"logInToLogin" = "Авторизируйтесь для входа";
+"authenticationError" = " Ошибка аутентификации";

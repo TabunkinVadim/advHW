@@ -160,3 +160,7 @@
 
 "DescriptionNews" = "News";
 
+// MARK: LocalAuthorizationService
+
+"logInToLogin" = "log in to login";
+"authenticationError" = " authentication error";

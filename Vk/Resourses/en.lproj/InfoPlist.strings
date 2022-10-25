@@ -6,3 +6,4 @@
   
 */
 "NSLocationWhenInUseUsageDescription" = "Your location is required to display your location and marked places on the map.";
+"NSFaceIDUsageDescription" = "The use of FaceID is required for quick account login";

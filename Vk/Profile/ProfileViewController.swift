@@ -10,9 +10,6 @@ import StorageService
 import RealmSwift
 import SwiftUI
 
-protocol ProfileViewControllerProtocol: AnyObject {
-    func close ()
-}
 class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
 
     private var coreDataCoordinator = CoreDataCoordinator()
@@ -20,7 +17,10 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     private var index: Int = 0
     var header: ProfileHeaderView = ProfileHeaderView(reuseIdentifier: ProfileHeaderView.identifier)
 
-    private lazy var tableView: UITableView = {
+    var personalPosts: [Post]
+
+
+     lazy var tableView: UITableView = {
         $0.toAutoLayout()
         $0.dataSource = self
         $0.delegate = self
@@ -37,9 +37,9 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     
     var user: User
 
-    init (user: UserService, name: String) {
+    init (user: UserService, name: String, personalPosts: [Post]) {
         self.user = user.setUser(fullName: name) ?? User(fullName: "", avatar: UIImage(), status: "")
-
+        self.personalPosts = personalPosts
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -93,7 +93,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             numberRows = 1
         } else {
-            numberRows = posts.count
+            numberRows = personalPosts.count
         }
         return numberRows
     }
@@ -107,7 +107,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             var cell: PostTableViewCell
             cell = (tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier , for: indexPath) as! PostTableViewCell)
-            cell.setupCell(model: posts[indexPath.row], set: indexPath.row)
+            cell.setupCell(model: self.personalPosts[indexPath.row], set: indexPath.row)
             cell.index = indexPath.row
             let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
             tap.numberOfTapsRequired = 2
@@ -148,13 +148,14 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0{
             coordinator?.photoVC()
         } else {
+            print("\(indexPath)")
             index = indexPath.row
         }
     }
 
     @objc private func doubleTapped() {
 
-        coreDataCoordinator.sevePost(post: posts[index])
+        coreDataCoordinator.sevePost(post: personalPosts[index])
         NotificationCenter.default.post(name: NSNotification.Name.reloadFavoritPost, object: nil)
     }
 }
