@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coordinator: MainCoordinator?
 
 
+
+    private let notification = LocalNotificationsService()
     var window: UIWindow?
 //    func applicationDidFinishLaunching(_ application: UIApplication) {
 //        let appConfiguration = AppConfiguration.randomElement()
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         migration()
         MainCoordinator.shared.start()
+        notification.registeForLatestUpdatesIfPossible()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = MainCoordinator.shared.navigationController
         window?.makeKeyAndVisible()

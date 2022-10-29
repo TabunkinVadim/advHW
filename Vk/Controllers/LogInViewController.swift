@@ -14,6 +14,7 @@ class LogInViewController: UIViewController, LogInViewControllerProtocol {
     weak var coordinator: ProfileCoordinator?
     weak var delegate: LoginViewControllerDelegate?
     weak var delegateChecker: CheckerServiceProtocol?
+    
     private var isCheck = false
     private var loginCheck = ""
     private var passwordCheck = ""

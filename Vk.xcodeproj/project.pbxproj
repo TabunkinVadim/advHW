@@ -25,6 +25,7 @@
 		6E18530127DDE65900A8EA39 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1852FD27DDE65900A8EA39 /* FeedViewController.swift */; };
 		6E18530227DDE65900A8EA39 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1852FE27DDE65900A8EA39 /* InfoViewController.swift */; };
 		6E4A49AF2900623D00DC5332 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4A49AE2900623D00DC5332 /* LocalAuthorizationService.swift */; };
+		6E4BAAEC290B83C300414F31 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4BAAEB290B83C300414F31 /* LocalNotificationsService.swift */; };
 		6E514B3E28B6C5E7008F9E89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E5499F3288FCC97002C43F3 /* GoogleService-Info.plist */; };
 		6E514B3F28B6C5E8008F9E89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E5499F3288FCC97002C43F3 /* GoogleService-Info.plist */; };
 		6E514B4028B6C5E9008F9E89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E5499F3288FCC97002C43F3 /* GoogleService-Info.plist */; };
@@ -149,6 +150,7 @@
 		6E1852FE27DDE65900A8EA39 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		6E18530327DDE66B00A8EA39 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; usesTabs = 0; };
 		6E4A49AE2900623D00DC5332 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
+		6E4BAAEB290B83C300414F31 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		6E514B4128B953F7008F9E89 /* RealmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinator.swift; sourceTree = "<group>"; };
 		6E514B4328BB38E4008F9E89 /* FavoritePostsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostsCoordinator.swift; sourceTree = "<group>"; };
 		6E514B4528BB3956008F9E89 /* FavoritePostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostsController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				6E5499F7288FD43E002C43F3 /* CheckerService.swift */,
 				6E9D02DF28469B91000F6E91 /* Protocols.swift */,
 				6EFC728127F047E6006C3DED /* Photo.swift */,
+				6E4BAAEB290B83C300414F31 /* LocalNotificationsService.swift */,
 				6E4A49AE2900623D00DC5332 /* LocalAuthorizationService.swift */,
 				6EFC727B27EF5249006C3DED /* ConstrantsPostTableViewCell.swift */,
 				6E9D02E3284C9825000F6E91 /* TestUserService.swift */,
@@ -762,6 +765,7 @@
 				6E52662328E02C6200168907 /* MapViewController.swift in Sources */,
 				6E924B0F2883555E0071F8B2 /* UserUrl1.swift in Sources */,
 				6E161DA62864EE99008591E8 /* ProfileCoordinator.swift in Sources */,
+				6E4BAAEC290B83C300414F31 /* LocalNotificationsService.swift in Sources */,
 				6E924B0B287DF9B90071F8B2 /* AppConfiguration.swift in Sources */,
 				6E5499F8288FD43E002C43F3 /* CheckerService.swift in Sources */,
 				6EFC727A27EEE923006C3DED /* Extensions.swift in Sources */,
