@@ -9,7 +9,8 @@ target 'StorageService' do
   pod 'SnapKit'
 
   target 'StorageServiceTests' do
-    # Pods for testing
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   end
 
 end

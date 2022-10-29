@@ -10,9 +10,6 @@ import StorageService
 import RealmSwift
 import SwiftUI
 
-protocol ProfileViewControllerProtocol: AnyObject {
-    func close ()
-}
 class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
 
     private var coreDataCoordinator = CoreDataCoordinator()
@@ -20,17 +17,18 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     private var index: Int = 0
     var header: ProfileHeaderView = ProfileHeaderView(reuseIdentifier: ProfileHeaderView.identifier)
 
-    private lazy var tableView: UITableView = {
+    var personalPosts: [Post]
+
+
+     lazy var tableView: UITableView = {
         $0.toAutoLayout()
         $0.dataSource = self
         $0.delegate = self
-        
-#if DEBUG
-        $0.backgroundColor = .red
-#else
-        $0.backgroundColor = .systemGray6
-#endif
-        
+        //#if DEBUG
+        $0.backgroundColor = .backgroundColor
+        //#else
+        //        $0.backgroundColor = .systemGray6
+        //#endif
         $0.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
         $0.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         $0.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
@@ -39,9 +37,9 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     
     var user: User
 
-    init (user: UserService, name: String) {
+    init (user: UserService, name: String, personalPosts: [Post]) {
         self.user = user.setUser(fullName: name) ?? User(fullName: "", avatar: UIImage(), status: "")
-
+        self.personalPosts = personalPosts
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,8 +48,8 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     }
 
     func close() {
-        let alert = UIAlertController(title: "Выход", message: "Вы уверенны?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "да", style: .destructive) { _ in
+        let alert = UIAlertController(title: "Exit".localized, message: "YouAreSure".localized, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Yes".localized, style: .destructive) { _ in
             let realmCoordinator = RealmCoordinator()
             guard let item = realmCoordinator.get() else {return}
             realmCoordinator.edit(item: item, isLogIn: false)
@@ -59,7 +57,7 @@ class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
             self.coordinator?.logInVC()
         }
         alert.addAction(ok)
-        let cancel = UIAlertAction(title: "нет", style: .cancel) { _ in
+        let cancel = UIAlertAction(title: "No".localized, style: .cancel) { _ in
         }
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
@@ -95,7 +93,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             numberRows = 1
         } else {
-            numberRows = posts.count
+            numberRows = personalPosts.count
         }
         return numberRows
     }
@@ -104,11 +102,12 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if (indexPath.section == 0) {
             var cell: PhotosTableViewCell
             cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
+            cell.contentView.backgroundColor = .backgroundCellColor
             return cell
         } else {
             var cell: PostTableViewCell
             cell = (tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier , for: indexPath) as! PostTableViewCell)
-            cell.setupCell(model: posts[indexPath.row], set: indexPath.row)
+            cell.setupCell(model: self.personalPosts[indexPath.row], set: indexPath.row)
             cell.index = indexPath.row
             let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
             tap.numberOfTapsRequired = 2
@@ -149,13 +148,14 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0{
             coordinator?.photoVC()
         } else {
+            print("\(indexPath)")
             index = indexPath.row
         }
     }
 
     @objc private func doubleTapped() {
 
-        coreDataCoordinator.sevePost(post: posts[index])
+        coreDataCoordinator.sevePost(post: personalPosts[index])
         NotificationCenter.default.post(name: NSNotification.Name.reloadFavoritPost, object: nil)
     }
 }

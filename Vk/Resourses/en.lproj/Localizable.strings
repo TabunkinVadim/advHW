@@ -1,0 +1,166 @@
+/* 
+ Localizable.strings
+ Vk
+
+ Created by Табункин Вадим on 04.10.2022.
+
+ */
+
+//MArK: General
+
+"Yes" = "Yes";
+
+"No" = "No";
+
+"Ok" = "Ok";
+
+"Cancel" = "Cancel";
+
+"Delete" = "Delete";
+
+"Error" = "Error";
+
+"UnknownError" = "Unknown error";
+
+"Good" = "Good";
+
+"Attention" = "Attention";
+
+//MArK: ProfileCoordinator
+
+"Petr" = "Petr";
+
+"Ivan" = "Ivan";
+
+"Profile" = "Profile";
+
+//"NewAccount" = "New account";
+
+//"NewAccountMassege" = "Do you want to create an account?";
+
+//MArK: FeedCoordinator
+
+"Feed" = "Feed";
+
+//MArK: FavoritCoordinator
+
+"Favorite" = "Favorite";
+
+//MArK: MapCoordinator
+
+"Map" = "Map";
+
+//MArK: FeedModel
+
+"EnterWord" ="Enter word";
+
+//MArK: ProfileHeaderView
+
+"Exit" = "Exit";
+
+//MArK: ProfileHeaderView
+
+"ShowStatus" = "Show status";
+
+"NoStatus" = "No status";
+
+//MArK: PostTableViewCell
+
+"Likes" = "Likes";
+
+"Views" = "Views";
+
+//MArK: PhotosTableViewCell
+
+"Photos" = "Photos";
+
+// MARK: LoginViewController
+
+"LoginTextFieldPlaceholder" = "Email of phone";
+
+"PasswordTextFieldPlaceholder" = "Password";
+
+"Delete" = "Delete";
+
+"Login" = "Login";
+
+"InvalidInput" = "Invalid input";
+
+"Repeat" = "Repeat";
+
+"Retype" = "Retype";
+
+"CreateAnAccount" = "Create an account";
+
+// MARK: ProfileViewController
+
+"YouAreSure" = "You are sure";
+
+// MARK: FeedViewController
+
+"anyWord" = "Any word";
+
+"CheckWord" ="Check Word";
+
+// MARK: PhotosViewController
+
+"PhotoGallery" = "Photo Gallery";
+
+// MARK: PostViewController
+
+"Info" = "Info";
+
+// MARK: InfoViewController
+
+"Alert" = "Alert";
+
+"Inhabitants" = "Inhabitants of the Planet Taurine";
+
+// MARK: MapViewController
+
+"Add pin" = "Add pin";
+
+"Enter the title" = "Enter the title";
+
+"RemoveAllPins" = "Remove all pins";
+
+"DeletePinMassege" = "Are you sure you want to remove all pins?";
+
+"NoAccessAclocationMaassege" = "No access to geolocation\ngo to settings?";
+
+"Settings" = "Settings";
+
+// MARK: TestUserService
+
+"PetrStatus" = "Russian is the one who loves Russia and serves it";
+
+// MARK: CurrentUserService
+
+"IvanStatus" = "Live and learn";
+
+// MARK: Post
+
+"AuthorPost1" = "ZinovkinArt";
+
+"DescriptionPost1" = "Here again, simple symbolism, let everyone decide for himself about its meaning.";
+
+"AuthorPost2" = "Books";
+
+"DescriptionPost2" = "Unique art object \"The Lost Book\"";
+
+"AuthorPost3" = "Read books";
+
+"DescriptionPost3" = "Cursed laziness! What a nice person I would be if it didn't bother me.\n- L. N. Tolstoy";
+
+"AuthorPost4" = "cartoon";
+
+"DescriptionPost4" = "hedgehog in the fog";
+
+"AuthorNews" = "News";
+
+"DescriptionNews" = "News";
+
+// MARK: LocalAuthorizationService
+
+"logInToLogin" = "log in to login";
+"authenticationError" = " authentication error";

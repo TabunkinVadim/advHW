@@ -14,14 +14,14 @@ class PostTableViewCell: UITableViewCell {
     var index: Int = 0
     let postCell: UIView = {
         $0.toAutoLayout()
-        $0.backgroundColor = .white
+        $0.backgroundColor = .backgroundCellColor
         return $0
     }(UIView())
 
     let postAutor :UILabel = {
         $0.toAutoLayout()
         $0.font = UIFont.boldSystemFont(ofSize: 20)
-        $0.textColor = .black
+        $0.textColor = .textColor
         $0.numberOfLines = 2
         return $0
     } (UILabel())
@@ -36,7 +36,7 @@ class PostTableViewCell: UITableViewCell {
     let postDescription : UILabel = {
         $0.toAutoLayout()
         $0.font = UIFont.systemFont(ofSize: 14)
-        $0.textColor = .systemGray
+        $0.textColor = .statusTextColor
         $0.numberOfLines = 0
         return $0
     } (UILabel())
@@ -44,26 +44,30 @@ class PostTableViewCell: UITableViewCell {
     let postLike : UILabel = {
         $0.toAutoLayout()
         $0.font = UIFont.systemFont(ofSize: 16)
-        $0.textColor = .black
+        $0.textColor = .textColor
         return $0
     } (UILabel())
 
     let postViews : UILabel = {
         $0.toAutoLayout()
         $0.font = UIFont.systemFont(ofSize: 16)
-        $0.textColor = .black
+        $0.textColor = .textColor
         return $0
     } (UILabel())
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        self.index = index
         super .init(style: style, reuseIdentifier: reuseIdentifier)
-//        self.index = index
         layout()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func likesCount(NumberOfLike: Int) -> String {
+        let formatString: String = NSLocalizedString("NumberOfLike", comment: "")
+        let resultString: String = String.localizedStringWithFormat(formatString, NumberOfLike)
+        return resultString
     }
 
     func setupCell (model:Post, set: Int) {
@@ -84,8 +88,8 @@ class PostTableViewCell: UITableViewCell {
             postImage.image = imageFilter
         }
         postDescription.text = model.description
-        postLike.text = "Likes: \(model.likes)"
-        postViews.text = "Views: \(model.views)"
+        postLike.text = "\(likesCount(NumberOfLike: model.likes))"
+        postViews.text = "\("Views".localized): \(model.views)"
     }
 
     private func layout() {

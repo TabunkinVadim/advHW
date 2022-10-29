@@ -26,20 +26,20 @@ class FeedViewController: UIViewController {
         $0.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
         $0.leftViewMode = .always
         $0.rightViewMode = .always
-        $0.backgroundColor = .white
+        $0.backgroundColor = .backgroundCellColor
         $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 10
-        $0.textColor = .black
+        $0.textColor = .textColor
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.tintColor = UIColor(named: "MainColor")
         $0.autocapitalizationType = .none
-        $0.placeholder = "any word"
+        $0.placeholder = "anyWord".localized
         $0.delegate = self
         return $0
     }(UITextField())
 
-    private lazy var wordCheck = CustomButton(title: "Chech word", color: UIColor(named: "MainColor") ?? .systemBlue, colorTitle: .white, borderWith: 0, cornerRadius: 10) {
+    private lazy var wordCheck = CustomButton(title: "CheckWord".localized, color: UIColor(named: "MainColor") ?? .systemBlue, colorTitle: .white, borderWith: 0, cornerRadius: 10) {
         self.feedModel.chenge(.tapButton(checkModel: self.checkModel, textField: self.word))
     }
 
@@ -52,10 +52,10 @@ class FeedViewController: UIViewController {
         return stack
     }()
 
-    private lazy var postButton1 = CustomButton(title: newPost.title + "1", color: .systemGray4, colorTitle: .black, borderWith: 1, cornerRadius: 10) {
+    private lazy var postButton1 = CustomButton(title: newPost.title + "1", color: .systemGray4, colorTitle: .textColor, borderWith: 1, cornerRadius: 10) {
         self.feedModel.chenge(.postDetail)
     }
-    private lazy var postButton2 = CustomButton(title: newPost.title + "2", color: .systemGray4,colorTitle: .black, borderWith: 1, cornerRadius: 10) {
+    private lazy var postButton2 = CustomButton(title: newPost.title + "2", color: .systemGray4,colorTitle: .textColor, borderWith: 1, cornerRadius: 10) {
         self.feedModel.chenge(.postDetail)
     }
     private let checkModel: CheckModel
@@ -181,7 +181,5 @@ public extension NSNotification.Name {
     static let redLable = NSNotification.Name("redLable")
     static let greenLable = NSNotification.Name("greenLable")
 }
-
-let newPost = Post(author: "News", image: UIImage(), description: "", likes: 10, views: 10, title: "Новости")
 
 
